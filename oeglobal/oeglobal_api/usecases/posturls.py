@@ -23,7 +23,7 @@ def get_urls(baseurl):
                     links = alink.findAll('a')
                     # print(links)
                     for link in links:
-                        print("Found the URL:", link['href'])
+                        # print("Found the URL:", link['href'])
                         href = link['href']
                         # print(href)
                         pagelinks.append('https://connect.oeglobal.org'+href)
