@@ -7,7 +7,7 @@ def get_urls(baseurl):
 
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    print(soup.prettify())
+    # print(soup.prettify())
 
 
         
@@ -29,5 +29,5 @@ def get_urls(baseurl):
                         pagelinks.append('https://connect.oeglobal.org'+href)
                         
                                     
-    print(pagelinks)
+    # print(pagelinks)
     return pagelinks
