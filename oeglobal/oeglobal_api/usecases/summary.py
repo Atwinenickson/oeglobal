@@ -25,7 +25,8 @@ class OeglobalNewsDetail:
             return dictironaryData
 
 
-    def ConvertToJson(self,dictironaryData):
+    def ConvertToJson(self):
+        dictironaryData = self.OeglobalData(self.url)
         convertedData=json.dumps(dictironaryData)
 
         self.SaveToDatabase(convertedData)
@@ -41,5 +42,5 @@ class OeglobalNewsDetail:
 
 
 
-dictironaryData = OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData('https://connect.oeglobal.org/')
-OeglobalNewsDetail('https://connect.oeglobal.org/').ConvertToJson(dictironaryData)
+# dictironaryData = OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData('https://connect.oeglobal.org/')
+OeglobalNewsDetail('https://connect.oeglobal.org/').ConvertToJson()
