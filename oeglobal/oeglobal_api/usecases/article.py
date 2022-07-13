@@ -12,31 +12,31 @@ soup = BeautifulSoup(page.text, 'html.parser')
 
 
 
-# topics = []
-# anchorlinks = []
-# posts = []
-# views = []
-# for tr in soup.find_all('span',attrs={'class':'link-top-line'}):
-#     topics.append(tr.findAll('a')[0]['href'])
-#     anchors = tr.findAll('a')
-#     for anchor in anchors:
-#         anchorlinks.append(anchor.text)
+topics = []
+anchorlinks = []
+posts = []
+views = []
+for tr in soup.find_all('span',attrs={'class':'link-top-line'}):
+    topics.append(tr.findAll('a')[0]['href'])
+    anchors = tr.findAll('a')
+    for anchor in anchors:
+        anchorlinks.append(anchor.text)
 
-# print(topics)
-# print(anchorlinks)
-
-
+print(topics)
+print(anchorlinks)
 
 
-# for post in soup.find_all('span',attrs={'class':'posts'}):
-#     posts.append(post.text)
 
-# print(posts)
 
-# for view in soup.find_all('span',attrs={'class':'views'}):
-#     views.append(view.text)
+for post in soup.find_all('span',attrs={'class':'posts'}):
+    posts.append(post.text)
 
-# print(views)
+print(posts)
+
+for view in soup.find_all('span',attrs={'class':'views'}):
+    views.append(view.text)
+
+print(views)
 
 
 
@@ -56,7 +56,6 @@ for row in rows:
     replies = cols[2]
     views = cols[3]
     date_posted = cols[4]
-    print('...................')
     data.append([ele for ele in cols if ele])
 
 # print(data)
@@ -69,4 +68,6 @@ article = {'Title':description,
         'TopicLinks':anchorlinks,
         'Date':date_posted}
 
+print('...............article............')
 print(article)
+print('...............article............')
