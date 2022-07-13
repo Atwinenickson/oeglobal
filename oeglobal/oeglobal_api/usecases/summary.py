@@ -33,9 +33,9 @@ class OeglobalNewsDetail:
     def SaveToDatabase(self,convertedData):
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
-        create_table = "CREATE TABLE oeglobal_api_articles (id int, Replies text, Views text, Date date, Topics text, TopicsLinks text)"
+        create_table = "CREATE TABLE oeglobal_api_articles (id int, Replies text, Views text, Topics text, TopicsLinks text,  Date date)"
         self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles values(?,?)',[id,convertedData])
+        self.connection.execute('insert into oeglobal_api_articles values(?,?,?,?,?,?)',[id,convertedData])
         self.connection.commit()
 
 
