@@ -21,17 +21,6 @@ class OeglobalNewsDetail:
         for link in pagelinks:
             dictironaryData = get_articles(link)
             self.SaveToDatabase(dictironaryData)
-            # convertedData=json.dumps(dictironaryData)
-            # print(dictironaryData)
-            # return dictironaryData
-
-
-    # def ConvertToJson(self):
-    #     dictironaryData = self.OeglobalData()
-    #     convertedData=dictironaryData
-    #     print(convertedData['Title'])
-
-    #     self.SaveToDatabase(convertedData)
         
 
     def SaveToDatabase(self,convertedData):
@@ -45,5 +34,4 @@ class OeglobalNewsDetail:
 
 
 
-# dictironaryData = OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData('https://connect.oeglobal.org/')
 OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData()
