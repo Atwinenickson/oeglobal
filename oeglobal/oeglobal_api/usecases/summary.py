@@ -3,17 +3,13 @@ from bs4 import BeautifulSoup
 from article import get_articles
 from posturls import get_urls
 import json
-
-
-
-    
-
+import sqlite3
 
 
 class OeglobalNewsDetail:
     def __init__(self,url):
-        self.url = 'https://connect.oeglobal.org/'
-        self.connection = sqlite3.connect('/home/atwine/nickson/Work/oeglobal/oeglobal/db.sqlite3')
+        self.url = url
+        self.connection = sqlite3.connect('/mnt/d/Work/Others/Oreg/oeglobal/oeglobal')
         self.cursor = self.connection.cursor()
         self.detail={}
 
@@ -39,5 +35,5 @@ class OeglobalNewsDetail:
 
 
 
-dictironaryData = NewsDetail().OeglobalData()
-NewsDetail().ConvertToJson(dictironaryData)
+dictironaryData = OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData()
+OeglobalNewsDetail().ConvertToJson(dictironaryData)
