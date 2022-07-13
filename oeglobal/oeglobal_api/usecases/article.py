@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 
 
@@ -47,8 +48,8 @@ def get_articles(articleurl):
         date_posted = cols[4]
         data.append([ele for ele in cols if ele])
 
-
-    article = {'Title':description, 
+    new_description = re.sub('\s{2,}', ' ', description)
+    article = {'Title':new_description, 
             'Replies':replies, 
             'Views':views, 
             'Topics':topics, 
