@@ -21,7 +21,8 @@ class OeglobalNewsDetail:
         for link in pagelinks:
             dictironaryData = get_articles(link)
             # convertedData=json.dumps(dictironaryData)
-            print(dictironaryData)
+            # print(dictironaryData)
+            return dictironaryData
 
 
     def ConvertToJson(self,dictironaryData):
@@ -33,9 +34,9 @@ class OeglobalNewsDetail:
     def SaveToDatabase(self,convertedData):
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
-        create_table = "CREATE TABLE oeglobal_api_articles_3 (id int, Title)"
+        create_table = "CREATE TABLE oeglobal_api_articles_6 (id int, Title text)"
         self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles_3 values(?,?)',[id,convertedData['Title']])
+        self.connection.execute('insert into oeglobal_api_articles_6 values(?,?)',[id,convertedData["Title"]])
         self.connection.commit()
 
 
