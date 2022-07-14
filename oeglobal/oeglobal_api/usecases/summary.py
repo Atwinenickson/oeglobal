@@ -27,9 +27,12 @@ class OeglobalNewsDetail:
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
         title = convertedData['Title']
-        # create_table = "CREATE TABLE oeglobal_api_articles_18 (Title text)"
+        replies = convertedData['Replies']
+        views = convertedData['Views']
+        date = convertedData['Date']
+        # create_table = "CREATE TABLE oeglobal_api_articles_21 (Title text, Replies text, Views text, Date NUMERIC)"
         # self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles_18 values(?)',[title])
+        self.connection.execute('insert into oeglobal_api_articles_21 values(?,?,?,?)',[title, replies, views, date])
         self.connection.commit()
 
 

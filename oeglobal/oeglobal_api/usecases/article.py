@@ -55,7 +55,10 @@ def get_articles(articleurl):
     #         'Topics':topics, 
     #         'TopicLinks':anchorlinks,
     #         'Date':date_posted}
-    article = {'Title':new_description}
+    article = {'Title':new_description, 
+            'Replies':replies, 
+            'Views':views, 
+            'Date':date_posted}
 
     print('...............article............')
     print(article)
