@@ -50,12 +50,6 @@ def get_articles(articleurl):
         data.append([ele for ele in cols if ele])
 
     new_description = re.sub('\s{2,}', ' ', description)
-    # article = {'Title':new_description, 
-    #         'Replies':replies, 
-    #         'Views':views, 
-    #         'Topics':topics, 
-    #         'TopicLinks':anchorlinks,
-    #         'Date':date_posted}
     uuidOne = str(uuid.uuid4())
     articleid = 'article-' + uuidOne
     topicid = 'topic-' + uuidOne
