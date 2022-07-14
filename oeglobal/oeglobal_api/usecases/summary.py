@@ -35,10 +35,16 @@ class OeglobalNewsDetail:
     def SaveToDatabase(self,convertedData):
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
-        create_table = "CREATE TABLE oeglobal_api_articles_6 (id int, Title text)"
+        create_table = "CREATE TABLE oeglobal_api_articles_7 (id int, Title text)"
         self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles_6 values(?,?)',[id,convertedData["Title"]])
-        self.connection.commit()
+        columns = ['id','Title']
+        for row in convertedData:
+            keys= tuple(row[c] for c in columns)
+            self.connection.execute('insert into oeglobal_api_articles_7 values(?,?,?)',keys)
+            print(f'{row["name"]} data inserted Succefully')
+            self.connection.commit()
+        # self.connection.execute('insert into oeglobal_api_articles_6 values(?,?)',[id,convertedData["Title"]])
+        # self.connection.commit()
 
 
 

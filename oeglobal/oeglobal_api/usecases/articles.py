@@ -85,8 +85,13 @@ class NewsDetail:
     def SaveToDatabase(self,convertedData):
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
-        self.connection.execute('insert into news_newsdetail values(?,?)',[id,convertedData])
-        self.connection.commit()
+        columns = ['id','Title']
+        for row in convertedData:
+            keys= tuple(row[c] for c in columns)
+            self.connection.execute('insert into news_newsdetail values(?,?,?)',keys)
+            print(f'{row["name"]} data inserted Succefully')
+        # self.connection.execute('insert into news_newsdetail values(?,?)',[id,convertedData])
+            self.connection.commit()
         
 
 
