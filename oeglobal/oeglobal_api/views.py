@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from oeglobal_api.serializers import ArticleSerializer, TopicSerializer, TopicURLSerializer
-from oeglobal_api.models import Article, Topic, TopicURL
+from oeglobal_api.serializers import ArticleSerializer, TopicSerializer, TopicURLSerializer, PodcastSerializer, RecentPodcastSerializer
+from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -16,3 +16,12 @@ class TopicViewSet(viewsets.ModelViewSet):
 class TopicURLViewSet(viewsets.ModelViewSet):
    queryset = TopicURL.objects.all()
    serializer_class = TopicURLSerializer
+
+class PodcastViewSet(viewsets.ModelViewSet):
+   queryset = Podcast.objects.all()
+   serializer_class = PodcastSerializer
+
+
+class RecentPodcastViewSet(viewsets.ModelViewSet):
+   queryset = RecentPodcast.objects.all()
+   serializer_class = RecentPodcastSerializer

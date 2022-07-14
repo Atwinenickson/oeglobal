@@ -60,14 +60,15 @@ def get_podcast():
             # print(comment)
         
         podcast = {
-            'ID':podcastid,
-            'Title':anchortext, 
-        'PodcastUrl': anchorlink,
-                'Comments':comment, 
-                'Description':desc, 
-                'Date':date}
-        
-        print(podcast)
+                'ID':podcastid,
+                'Title':anchortext, 
+            'Podcasturl': anchorlink,
+                    'Comments':comment, 
+                    'Description':desc, 
+                    'Date':date}
+            
+        # print(podcast)
+        return podcast
 
 
 # get_podcast()
@@ -97,10 +98,11 @@ def get_recent_podcast():
             recentpodcast = {
                     'ID':recent_podcastid,
                     'Title':title, 
-                'RecentPodcastUrl': recentlink,
+                'RecentPodcasturl': recentlink,
                         'Date':date}
                 
-            print(recentpodcast)
+            # print(recentpodcast)
+            return recentpodcast
 
 
-get_recent_podcast()
+# get_recent_podcast()

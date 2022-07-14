@@ -18,3 +18,19 @@ class TopicURL(models.Model):
    TopicUrlID = models.TextField(max_length=300, null=True)
    TopicUrl = models.TextField(max_length=300, null=True)
    TopicID = models.ForeignKey(Topic, on_delete=models.CASCADE)
+
+
+class Podcast(models.Model):
+   PodcastID = models.TextField(max_length=300, null=True)
+   Title = models.TextField(max_length=300, null=True)
+   Podcasturl = models.TextField(max_length=300, null=True)
+   Comments = models.TextField(max_length=300, null=True)
+   Description = models.TextField(max_length=300, null=True)
+   Date = models.TextField(max_length=300, null=True)
+
+
+class RecentPodcast(models.Model):
+   RecentPodcastID = models.TextField(max_length=300, null=True)
+   Title = models.TextField(max_length=300, null=True)
+   RecentPodcasturl = models.TextField(max_length=300, null=True)
+   Date = models.TextField(max_length=300, null=True)
