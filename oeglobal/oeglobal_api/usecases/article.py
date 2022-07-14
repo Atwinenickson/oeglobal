@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import uuid
 
 
 
@@ -55,14 +56,22 @@ def get_articles(articleurl):
     #         'Topics':topics, 
     #         'TopicLinks':anchorlinks,
     #         'Date':date_posted}
-    article = {'Title':new_description, 
+    uuidOne = str(uuid.uuid4())
+    articleid = 'article-' + uuidOne
+    topicid = 'topic-' + uuidOne
+    article = {
+        'ID':articleid,
+        'Title':new_description, 
     'ArticleUrl': url,
             'Replies':replies, 
             'Views':views, 
             'Date':date_posted}
-
+    topic =  {
+        "Topics":topics,
+        "ID":topicid
+    }
     print('...............article............')
     print(article)
     print('...............article............')
 
-    return article
+    return article, topic

@@ -19,21 +19,39 @@ class OeglobalNewsDetail:
     def OeglobalData(self):
         pagelinks = get_urls(self.url)
         for link in pagelinks:
-            dictironaryData = get_articles(link)
-            self.SaveToDatabase(dictironaryData)
+            dictironaryData = get_articles(link)[0]
+            dictironaryTopics = get_articles(link)[1]
+            self.SaveToDatabase(dictironaryData, dictironaryTopics)
         
 
-    def SaveToDatabase(self,convertedData):
+    def SaveToDatabase(self,dictironaryData, dictironaryTopics):
         randomNumber = random.randint(1,1000)
-        id = int(datetime.now().microsecond)+randomNumber
-        title = convertedData['Title']
-        replies = convertedData['Replies']
-        views = convertedData['Views']
-        date = convertedData['Date']
-        articleurl = convertedData['ArticleUrl']
-        create_table = "CREATE TABLE oeglobal_api_articles_23 (Title text, ArticleUrl text, Replies text, Views text, Date NUMERIC)"
-        self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles_23 values(?,?,?,?,?)',[title, articleurl, replies, views, date])
+        print(dictironaryData)
+        topic = dictironaryTopics['Topics']
+        topicid = dictironaryTopics['ID']
+        
+        articleid = dictironaryData['ID']
+        title = dictironaryData['Title']
+        replies = dictironaryData['Replies']
+        views = dictironaryData['Views']
+        date = dictironaryData['Date']
+        articleurl = dictironaryData['ArticleUrl']
+        # create_table1 = "CREATE TABLE oeglobal_api_articles_52 (ArticleID text y, Title text, ArticleUrl text, Replies text, Views text, Date numeric)"
+        # create_table2 = "CREATE TABLE oeglobal_api_topics_52 (TopicID text , Topic text, ArticleID integer,  FOREIGN KEY (ArticleID) REFERENCES oeglobal_api_articles_51 (ArticleID) )"
+        # self.connection.execute(create_table1)
+        # self.connection.execute(create_table2)
+        self.connection.execute('insert into oeglobal_api_articles_52 values(?,?,?,?,?,?)',[articleid, title, articleurl, replies, views, date])
+        for data in topic:
+            print(data)
+            self.connection.execute('insert into oeglobal_api_topics_52 values(?,?,?)',[topicid , data, articleid])
+
+        # create_table2 = "CREATE TABLE oeglobal_api_topics_8 (TopicID integer primary key AUTOINCREMENT, Topic text ArticleID integer,  FOREIGN KEY (ArticleID) REFERENCES oeglobal_api_articles_30 (ArticleID) )"
+        # self.connection.execute(create_table2)
+        
+        
+        # for data in topic:
+        #     print(data)
+        #     self.connection.execute('insert into oeglobal_api_topics_8 values(?,?)',[None , data])
         self.connection.commit()
 
 
