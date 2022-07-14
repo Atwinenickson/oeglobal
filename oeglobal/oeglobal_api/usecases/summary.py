@@ -30,9 +30,10 @@ class OeglobalNewsDetail:
         replies = convertedData['Replies']
         views = convertedData['Views']
         date = convertedData['Date']
-        # create_table = "CREATE TABLE oeglobal_api_articles_21 (Title text, Replies text, Views text, Date NUMERIC)"
-        # self.connection.execute(create_table)
-        self.connection.execute('insert into oeglobal_api_articles_21 values(?,?,?,?)',[title, replies, views, date])
+        articleurl = convertedData['ArticleUrl']
+        create_table = "CREATE TABLE oeglobal_api_articles_23 (Title text, ArticleUrl text, Replies text, Views text, Date NUMERIC)"
+        self.connection.execute(create_table)
+        self.connection.execute('insert into oeglobal_api_articles_23 values(?,?,?,?,?)',[title, articleurl, replies, views, date])
         self.connection.commit()
 
 

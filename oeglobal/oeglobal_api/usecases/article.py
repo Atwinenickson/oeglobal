@@ -56,6 +56,7 @@ def get_articles(articleurl):
     #         'TopicLinks':anchorlinks,
     #         'Date':date_posted}
     article = {'Title':new_description, 
+    'ArticleUrl': url,
             'Replies':replies, 
             'Views':views, 
             'Date':date_posted}
