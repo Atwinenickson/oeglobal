@@ -59,6 +59,7 @@ def get_articles(articleurl):
     uuidOne = str(uuid.uuid4())
     articleid = 'article-' + uuidOne
     topicid = 'topic-' + uuidOne
+    topicurlid = 'topicurl-' + uuidOne
     article = {
         'ID':articleid,
         'Title':new_description, 
@@ -70,8 +71,13 @@ def get_articles(articleurl):
         "Topics":topics,
         "ID":topicid
     }
+
+    topiclinks =  {
+        "TopicUrls":anchorlinks,
+        "ID":topicurlid
+    }
     print('...............article............')
     print(article)
     print('...............article............')
 
-    return article, topic
+    return article, topic, topiclinks
