@@ -17,28 +17,31 @@ class OeglobalPodcast:
     def OeglobalData(self):
         dictironaryPodcast = get_podcast()
         dictironaryPodcasturl = get_recent_podcast()
+        print(dictironaryPodcast)
         self.SaveToDatabase(dictironaryPodcast, dictironaryPodcasturl)
             
         
 
     def SaveToDatabase(self,dictironaryPodcast, dictironaryPodcasturl):
-        recentpodcastid = dictironaryPodcasturl['ID']
-        recentpodcasttitle = dictironaryPodcasturl['Title']
-        recentpodcasturl = dictironaryPodcasturl['RecentPodcasturl']
-        recentdate = dictironaryPodcasturl['Date']
+        for recentpodcast in dictironaryPodcasturl:
+            # recentpodcastid = recentpodcast['ID']
+            recentpodcasttitle = recentpodcast['Title']
+            recentpodcasturl = recentpodcast['RecentPodcasturl']
+            recentdate = recentpodcast['Date']
+            self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?)',[None , recentpodcasttitle, recentpodcasturl, recentdate])
+            
+            self.connection.commit()
 
-        podcastid = dictironaryPodcast['ID']
-        title = dictironaryPodcast['Title']
-        podcasturl = dictironaryPodcast['Podcasturl']
-        comments = dictironaryPodcast['Comments']
-        description = dictironaryPodcast['Description']
-        date = dictironaryPodcast['Date']
+        for podcast in dictironaryPodcast:
+        # podcastid = dictironaryPodcast['ID']
+            title = podcast['Title']
+            podcasturl = podcast['Podcasturl']
+            comments = podcast['Comments']
+            description = podcast['Description']
+            date = podcast['Date']
 
-        self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?,?)',[None, podcastid, title, podcasturl, comments, description, date])
-       
-        self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?,?)',[None, recentpodcastid , recentpodcasttitle, recentpodcasturl, recentdate])
-        
-        self.connection.commit()
+            self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?)',[None, title, podcasturl, comments, description, date])
+            self.connection.commit()
 
 
 

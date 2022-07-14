@@ -21,7 +21,7 @@ class TopicURL(models.Model):
 
 
 class Podcast(models.Model):
-   PodcastID = models.TextField(max_length=300, null=True)
+   # PodcastID = models.TextField(max_length=300, null=True)
    Title = models.TextField(max_length=300, null=True)
    Podcasturl = models.TextField(max_length=300, null=True)
    Comments = models.TextField(max_length=300, null=True)
@@ -30,7 +30,7 @@ class Podcast(models.Model):
 
 
 class RecentPodcast(models.Model):
-   RecentPodcastID = models.TextField(max_length=300, null=True)
+   # RecentPodcastID = models.TextField(max_length=300, null=True)
    Title = models.TextField(max_length=300, null=True)
    RecentPodcasturl = models.TextField(max_length=300, null=True)
    Date = models.TextField(max_length=300, null=True)

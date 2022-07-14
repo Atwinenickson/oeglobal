@@ -18,6 +18,11 @@ soup = BeautifulSoup(page.text, 'html.parser')
 # print(soup.prettify())
 
 def get_podcast():
+    titles = []
+    podcasturls = []
+    comments = []
+    descriptionlist = []
+    dates = []
     postcontainer = soup.findAll('div', attrs={'class':'post-container'})
 
 
@@ -25,6 +30,7 @@ def get_podcast():
     # print(postcontainer)
 
     for posts in postcontainer:
+        # print(posts)
         headings = posts.findAll('h2', attrs={'class':'post-title'})
 
         # print(headings)
@@ -38,13 +44,17 @@ def get_podcast():
                 anchortext = anchor.text
                 # print(anchorlink)
                 # print(anchortext)
+                podcasturls.append(anchorlink)
+                titles.append(anchortext)
 
         descriptions = posts.findAll('p', attrs={'class':'post-excerpt'})
+        
 
         # print(descriptions)
 
         for description in descriptions:
             desc = description.text
+            descriptionlist.append(desc)
             # print(desc)
         
         meta = posts.findAll('span', attrs={'class':'meta-text'})
@@ -54,10 +64,12 @@ def get_podcast():
         for date in datelist:
             date = date
             # print(date)
+            dates.append(date)
         
         for comment in commentlist:
             comment = comment
             # print(comment)
+            comments.append(comment)
         
         podcast = {
                 'ID':podcastid,
@@ -66,15 +78,21 @@ def get_podcast():
                     'Comments':comment, 
                     'Description':desc, 
                     'Date':date}
-            
-        # print(podcast)
-        return podcast
+    podcasts = [{'Title': titles, 'Podcasturl': podcasturls,'Comments': comments, 'Description': descriptionlist, 'Date':dates} for titles,podcasturls, comments,descriptionlist, dates in zip(titles,podcasturls,comments,descriptionlist,dates )]
+    # print("Podcasts:",podcasts)
+
+    return podcasts
 
 
 # get_podcast()
 
+# print('....................|||||.....................\n')
 
 def get_recent_podcast():
+    titles = []
+    podcasturls = []
+    dates = []
+    
     recentcontainers = soup.findAll('div', attrs={'class':'widget widget_garfunkel_recent_posts'})
     # print(recentcontainer)
 
@@ -86,12 +104,15 @@ def get_recent_podcast():
             recentlink = recentcontainer.find('a')
             recentlink = recentlink.get('href')
             # print(recentlink)
+            podcasturls.append(recentlink)
             recentdiv = recentcontainer.findAll('div', attrs={'class':'inner'})
             for div in recentdiv:
                 title = div.find('p', attrs={'class':'title'})
                 date = div.find('p', attrs={'class':'meta'})
                 title = title.text
+                titles.append(title)
                 date = date.text
+                dates.append(date)
 
                 # print(title)
                 # print(date)
@@ -102,7 +123,11 @@ def get_recent_podcast():
                         'Date':date}
                 
             # print(recentpodcast)
-            return recentpodcast
+            # return recentpodcast
+    recentpodcasts = [{'Title': titles, 'RecentPodcasturl': podcasturls, 'Date':dates} for titles,podcasturls, dates in zip(titles,podcasturls,dates )]
+    # print("Recent Podcasts:",recentpodcasts)
+
+    return recentpodcasts
 
 
 # get_recent_podcast()

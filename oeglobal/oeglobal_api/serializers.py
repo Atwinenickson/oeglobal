@@ -21,9 +21,9 @@ class TopicURLSerializer(serializers.ModelSerializer):
 class PodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = Podcast
-       fields = ('PodcastID', 'Title', 'Podcasturl', 'Comments', 'Description', 'Date')
+       fields = ('Title', 'Podcasturl', 'Comments', 'Description', 'Date')
 
 class RecentPodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = RecentPodcast
-       fields = ('RecentPodcastID', 'Title', 'RecentPodcasturl', 'Date')
+       fields = ('Title', 'RecentPodcasturl', 'Date')
