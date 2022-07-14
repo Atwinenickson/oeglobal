@@ -12,7 +12,7 @@ from datetime import datetime
 class OeglobalNewsDetail:
     def __init__(self,url):
         self.url = url
-        self.connection = sqlite3.connect(Path(__file__).resolve().parent.parent / 'db.sqlite3')
+        self.connection = sqlite3.connect('/mnt/d/Work/Others/Oreg/oeglobal/oeglobal/db.sqlite3')
         self.cursor = self.connection.cursor()
         self.detail={}
 
@@ -46,14 +46,14 @@ class OeglobalNewsDetail:
         # self.connection.execute(create_table1)
         # self.connection.execute(create_table2)
         # self.connection.execute(create_table3)
-        self.connection.execute('insert into oeglobal_api_articles_54 values(?,?,?,?,?,?)',[articleid, title, articleurl, replies, views, date])
+        self.connection.execute('insert into oeglobal_api_article values(?,?,?,?,?,?,?)',[None, articleid, title, articleurl, replies, views, date])
         for data in topic:
             print(data)
-            self.connection.execute('insert into oeglobal_api_topics_54 values(?,?,?)',[topicid , data, articleid])
+            self.connection.execute('insert into oeglobal_api_topic values(?,?,?,?)',[None, topicid , data, articleid])
         
         for topicurl in topicurls:
             print(topicurl)
-            self.connection.execute('insert into oeglobal_api_topicurls_54 values(?,?,?)',[topicurlid , data, topicid])
+            self.connection.execute('insert into oeglobal_api_topicurl values(?,?,?,?)',[None, topicurlid , data, topicid])
         self.connection.commit()
 
 

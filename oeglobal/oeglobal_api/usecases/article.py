@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup
 import re
 import uuid
 
-
-
 def get_articles(articleurl):
         # get url
     url = articleurl
