@@ -16,37 +16,22 @@ class OeglobalNewsDetail:
         self.cursor = self.connection.cursor()
         self.detail={}
 
-    def OeglobalData(self, url):
-        pagelinks = get_urls(url)
+    def OeglobalData(self):
+        pagelinks = get_urls(self.url)
         for link in pagelinks:
             dictironaryData = get_articles(link)
-            # convertedData=json.dumps(dictironaryData)
-            # print(dictironaryData)
-            return dictironaryData
-
-
-    def ConvertToJson(self):
-        dictironaryData = self.OeglobalData(self.url)
-        convertedData=json.dumps(dictironaryData)
-
-        self.SaveToDatabase(convertedData)
+            self.SaveToDatabase(dictironaryData)
         
 
     def SaveToDatabase(self,convertedData):
         randomNumber = random.randint(1,1000)
         id = int(datetime.now().microsecond)+randomNumber
-        create_table = "CREATE TABLE oeglobal_api_articles_7 (id int, Title text)"
-        self.connection.execute(create_table)
-        columns = ['id','Title']
-        for row in convertedData:
-            keys= tuple(row[c] for c in columns)
-            self.connection.execute('insert into oeglobal_api_articles_7 values(?,?,?)',keys)
-            print(f'{row["name"]} data inserted Succefully')
-            self.connection.commit()
-        # self.connection.execute('insert into oeglobal_api_articles_6 values(?,?)',[id,convertedData["Title"]])
-        # self.connection.commit()
+        title = convertedData['Title']
+        # create_table = "CREATE TABLE oeglobal_api_articles_18 (Title text)"
+        # self.connection.execute(create_table)
+        self.connection.execute('insert into oeglobal_api_articles_18 values(?)',[title])
+        self.connection.commit()
 
 
 
-# dictironaryData = OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData('https://connect.oeglobal.org/')
-OeglobalNewsDetail('https://connect.oeglobal.org/').ConvertToJson()
+OeglobalNewsDetail('https://connect.oeglobal.org/').OeglobalData()
