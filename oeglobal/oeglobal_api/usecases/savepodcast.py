@@ -28,7 +28,15 @@ class OeglobalPodcast:
             recentpodcasttitle = recentpodcast['Title']
             recentpodcasturl = recentpodcast['RecentPodcasturl']
             recentdate = recentpodcast['Date']
-            self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?)',[None , recentpodcasttitle, recentpodcasturl, recentdate])
+            result = self.connection.execute("select recentpodcasturl from oeglobal_api_recentpodcast where RecentPodcasturl = ?", (recentpodcasturl,))
+            result=result.fetchall()
+            print('result')
+            print(result)
+            print('result')
+            if len(result) > 0:
+                print('Article exists')
+            else:
+                self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?)',[None , recentpodcasttitle, recentpodcasturl, recentdate])
             
             self.connection.commit()
 
@@ -40,7 +48,15 @@ class OeglobalPodcast:
             description = podcast['Description']
             date = podcast['Date']
 
-            self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?)',[None, title, podcasturl, comments, description, date])
+            result1 = self.connection.execute("select podcasturl from oeglobal_api_podcast where Podcasturl = ?", (podcasturl,))
+            result1=result1.fetchall()
+            print('result')
+            print(result1)
+            print('result')
+            if len(result1) > 0:
+                print('Article exists')
+            else:
+                self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?)',[None, title, podcasturl, comments, description, date])
             self.connection.commit()
 
 

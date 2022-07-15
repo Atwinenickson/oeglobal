@@ -43,7 +43,7 @@ class OeglobalNewsDetail:
 
 
         # result = self.connection.execute('select exists(select id from oeglobal_api_article where Articleurl = ?)', [articleurl])
-        result = self.connection.execute("select id from oeglobal_api_article where Articleurl = ?", (articleurl,))
+        result = self.connection.execute("select Articleurl from oeglobal_api_article where Articleurl = ?", (articleurl,))
         result=result.fetchall()
         print('result')
         print(result)
