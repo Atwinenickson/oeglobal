@@ -24,15 +24,11 @@ class OeglobalPodcast:
 
     def SaveToDatabase(self,dictironaryPodcast, dictironaryPodcasturl):
         for recentpodcast in dictironaryPodcasturl:
-            # recentpodcastid = recentpodcast['ID']
             recentpodcasttitle = recentpodcast['Title']
             recentpodcasturl = recentpodcast['RecentPodcasturl']
             recentdate = recentpodcast['Date']
             result = self.connection.execute("select recentpodcasturl from oeglobal_api_recentpodcast where RecentPodcasturl = ?", (recentpodcasturl,))
             result=result.fetchall()
-            print('result')
-            print(result)
-            print('result')
             if len(result) > 0:
                 print('Article exists')
             else:
@@ -41,7 +37,6 @@ class OeglobalPodcast:
             self.connection.commit()
 
         for podcast in dictironaryPodcast:
-        # podcastid = dictironaryPodcast['ID']
             title = podcast['Title']
             podcasturl = podcast['Podcasturl']
             comments = podcast['Comments']
@@ -50,9 +45,6 @@ class OeglobalPodcast:
 
             result1 = self.connection.execute("select podcasturl from oeglobal_api_podcast where Podcasturl = ?", (podcasturl,))
             result1=result1.fetchall()
-            print('result')
-            print(result1)
-            print('result')
             if len(result1) > 0:
                 print('Article exists')
             else:

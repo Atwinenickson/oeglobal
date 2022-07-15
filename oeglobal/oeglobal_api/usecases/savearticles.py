@@ -41,8 +41,6 @@ class OeglobalNewsDetail:
         date = dictironaryData['Date']
         articleurl = dictironaryData['ArticleUrl']
 
-
-        # result = self.connection.execute('select exists(select id from oeglobal_api_article where Articleurl = ?)', [articleurl])
         result = self.connection.execute("select Articleurl from oeglobal_api_article where Articleurl = ?", (articleurl,))
         result=result.fetchall()
         print('result')
@@ -55,7 +53,6 @@ class OeglobalNewsDetail:
         
 
         for data in topic:
-            print(data)
             result1 = self.connection.execute("select topic from oeglobal_api_topic where Topic = ?", [data])
             result1=result1.fetchall()
             if len(result1) > 0 :
