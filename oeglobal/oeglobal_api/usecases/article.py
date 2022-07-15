@@ -16,10 +16,10 @@ def get_articles(articleurl):
     posts = []
     views = []
     for tr in soup.find_all('span',attrs={'class':'link-top-line'}):
-        topics.append(tr.findAll('a')[0]['href'])
+        anchorlinks.append(tr.findAll('a')[0]['href'])
         anchors = tr.findAll('a')
         for anchor in anchors:
-            anchorlinks.append(anchor.text)
+            topics.append(anchor.text)
 
 
 
@@ -68,8 +68,8 @@ def get_articles(articleurl):
         "TopicUrls":anchorlinks,
         "ID":topicurlid
     }
-    print('...............article............')
-    print(article)
-    print('...............article............')
+    # print('...............article............')
+    # print(topiclinks)
+    # print('...............article............')
 
     return article, topic, topiclinks
