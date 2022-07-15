@@ -50,7 +50,7 @@ class OeglobalNewsDetail:
             print('Article exists')
         else:
             self.connection.execute('insert into oeglobal_api_article values(?,?,?,?,?,?,?)',[None, articleid, title, articleurl, replies, views, date])
-        
+            self.connection.commit()
 
         for data in topic:
             result1 = self.connection.execute("select topic from oeglobal_api_topic where Topic = ?", [data])
@@ -59,7 +59,7 @@ class OeglobalNewsDetail:
                 print('Topic Exists')
             else:
                 self.connection.execute('insert into oeglobal_api_topic values(?,?,?,?)',[None, topicid , data, articleid])
-        
+                self.connection.commit()
         
         for topicurl in topicurls:
             result2 = self.connection.execute('select topicurl from oeglobal_api_topicurl where TopicUrl = ?', [topicurl])
@@ -68,7 +68,7 @@ class OeglobalNewsDetail:
                 print('Topic URL exists')
             else:
                 self.connection.execute('insert into oeglobal_api_topicurl values(?,?,?,?)',[None, topicurlid , topicurl, topicid])
-        self.connection.commit()
+                self.connection.commit()
 
 
 
