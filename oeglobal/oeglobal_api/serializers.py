@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast
+from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast, SinglePodcast
 
 class ArticleSerializer(serializers.ModelSerializer):
    class Meta:
@@ -28,3 +28,8 @@ class RecentPodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = RecentPodcast
        fields = ('Title', 'RecentPodcasturl', 'Date')
+
+class SinglePodcastSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = SinglePodcast
+       fields = ('SinglePodcastID','Title',  'Audiolink', 'Description', 'Date')

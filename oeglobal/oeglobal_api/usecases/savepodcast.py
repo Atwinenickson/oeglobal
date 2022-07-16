@@ -10,7 +10,7 @@ from datetime import datetime
 
 class OeglobalPodcast:
     def __init__(self):
-        self.connection = sqlite3.connect('/mnt/d/Work/Others/Oreg/oeglobal/oeglobal/db.sqlite3')
+        self.connection = sqlite3.connect('/home/atwine/nickson/Work/oeglobal/oeglobal/db.sqlite3')
         self.cursor = self.connection.cursor()
         self.detail={}
 

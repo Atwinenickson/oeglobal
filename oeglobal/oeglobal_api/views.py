@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework import filters
 
-from oeglobal_api.serializers import ArticleSerializer, TopicSerializer, TopicURLSerializer, PodcastSerializer, RecentPodcastSerializer
-from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast
+from oeglobal_api.serializers import ArticleSerializer, TopicSerializer, TopicURLSerializer, PodcastSerializer, RecentPodcastSerializer, SinglePodcastSerializer
+from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast, SinglePodcast
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -45,4 +45,13 @@ class RecentPodcastViewSet(viewsets.ModelViewSet):
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
    filterset_fields =  ['Title', 'RecentPodcasturl', 'Date']
    search_fields = ['Title', 'RecentPodcasturl', 'Date']
+   ordering_fields = '__all__'
+
+
+class SinglePodcastViewSet(viewsets.ModelViewSet):
+   queryset = SinglePodcast.objects.all()
+   serializer_class = SinglePodcastSerializer
+   filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+   filterset_fields =  ['SinglePodcastID','Title',  'Audiolink', 'Description', 'Date']
+   search_fields = ['SinglePodcastID','Title',  'Audiolink', 'Description', 'Date']
    ordering_fields = '__all__'

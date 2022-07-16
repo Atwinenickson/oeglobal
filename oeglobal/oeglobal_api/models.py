@@ -34,3 +34,11 @@ class RecentPodcast(models.Model):
    Title = models.TextField(max_length=300, null=True)
    RecentPodcasturl = models.TextField(max_length=300, null=True)
    Date = models.TextField(max_length=300, null=True)
+
+
+class SinglePodcast(models.Model):
+   SinglePodcastID = models.TextField(max_length=300, null=True)
+   Title = models.TextField(max_length=300, null=True)
+   Audiolink = models.TextField(max_length=300, null=True)
+   Description = models.TextField(null=True)
+   Date = models.TextField(null=True)
