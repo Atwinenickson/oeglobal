@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from pocast import get_podcast
+from podcast import get_podcast
 from podcasturls import get_podcasturl
 import json
 import sqlite3
