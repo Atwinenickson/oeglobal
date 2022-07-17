@@ -44,16 +44,16 @@
 ![image info](oeglobal/pictures/podcasts.png)
 
 ### View recent podcasts
-![image info](oeglobal/pictures/pictures/recentpodcasts.png)
+![image info](oeglobal/pictures/recentpodcasts.png)
 
 ### View single podcasts
-![image info](oeglobal/pictures/pictures/singlepodcast.png)
+![image info](oeglobal/pictures/singlepodcast.png)
 
 ### View topics
-![image info](oeglobal/pictures/pictures/topics.png)
+![image info](oeglobal/pictures/topics.png)
 
 ### View topic urls
-![image info](oeglobal/pictures/pictures/topicurls.png)
+![image info](oeglobal/pictures/topicurls.png)
 
 ### View database
-![image info](oeglobal/pictures/pictures/databases.png)
+![image info](oeglobal/pictures/databases.png)
