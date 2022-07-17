@@ -8,7 +8,7 @@
 
 **ACTIVATE VIRTUAL ENVIRONMENT: . venv/bin/activate**
 
-**INSTALL ALL REQUIREMENTS (beautifulsoup, requests,django,rest framework, etc)**
+**PIP3 INSTALL ALL REQUIREMENTS (beautifulsoup, requests,django,rest framework, etc)**
 
 **RUN APPLICATION**
 
