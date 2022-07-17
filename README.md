@@ -35,25 +35,25 @@ RUN
 
 
 ### View all apis
-![image info](./apis.png)
+![image info](oeglobal/pictures/apis.png)
 
 ### View all articles
-![image info](./articles.png)
+![image info](oeglobal/pictures/articles.png)
 
 ### view podcasts
-![image info](./podcasts.png)
+![image info](oeglobal/pictures/podcasts.png)
 
 ### View recent podcasts
-![image info](./pictures/recentpodcasts.png)
+![image info](oeglobal/pictures/pictures/recentpodcasts.png)
 
 ### View single podcasts
-![image info](./pictures/singlepodcast.png)
+![image info](oeglobal/pictures/pictures/singlepodcast.png)
 
 ### View topics
-![image info](./pictures/topics.png)
+![image info](oeglobal/pictures/pictures/topics.png)
 
 ### View topic urls
-![image info](./pictures/topicurls.png)
+![image info](oeglobal/pictures/pictures/topicurls.png)
 
 ### View database
-![image info](./pictures/databases.png)
+![image info](oeglobal/pictures/pictures/databases.png)
