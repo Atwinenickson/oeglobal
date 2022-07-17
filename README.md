@@ -1,36 +1,36 @@
-TO RUN THIS APPLICATION
+# TO RUN THIS APPLICATION
 
-RUN MIGRATIONS
+## RUN MIGRATIONS
 
-cd oeglobal/oeglobal
+**cd oeglobal/oeglobal**
 
-CREATE VIRTUAL ENVIRONMENT: python3 -m venv venv
+**CREATE VIRTUAL ENVIRONMENT: python3 -m venv venv**
 
-ACTIVATE VIRTUAL ENVIRONMENT: . venv/bin/activate
+**ACTIVATE VIRTUAL ENVIRONMENT: . venv/bin/activate**
 
-INSTALL ALL REQUIREMENTS (beautifulsoup, requests,django,rest framework, etc)
+**INSTALL ALL REQUIREMENTS (beautifulsoup, requests,django,rest framework, etc)**
 
-RUN APPLICATION
+**RUN APPLICATION**
 
-RUN python3 manage.py makemigrations
+**RUN python3 manage.py makemigrations**
 
-RUN python3 manage.py migrate
+**RUN python3 manage.py migrate**
 
-RUN python3 manage.py runserver
+**RUN python3 manage.py runserver**
 
-ADD DATA TO DATABASE
+## ADD DATA TO DATABASE
 
-cd oeglobal/oeglobal/oeglobal\_api/usecases
+**cd oeglobal/oeglobal/oeglobal\_api/usecases**
 
-python3 savearticles.py
+**python3 savearticles.py**
 
-python3 savepodcast.py
+**python3 savepodcast.py**
 
-python3 savepodcastsummary.py
+**python3 savepodcastsummary.py**
 
-RUN
+## RUN
 
-[http://localhost:8000/oeglobal](http://localhost:8000/oeglobal) to view the api&#39;s and select the required api to view data.
+**[http://localhost:8000/oeglobal](http://localhost:8000/oeglobal) to view the api&#39;s and select the required api to view data.**
 
 
 
