@@ -10,7 +10,7 @@
 
 **PIP3 INSTALL ALL REQUIREMENTS (beautifulsoup, requests,django,rest framework, etc)**
 
-**RUN APPLICATION**
+## RUN APPLICATION
 
 **RUN python3 manage.py makemigrations**
 
