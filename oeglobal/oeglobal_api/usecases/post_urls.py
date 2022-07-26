@@ -10,7 +10,7 @@ def get_urls(baseurl):
 
 
         
-    pagelinks = []
+    page_links = []
     for tr in soup.find_all('tr'):
         for td in tr.find_all('td'):    
             data = td.find_all('div',attrs={'itemprop':'itemListElement'})
@@ -23,7 +23,7 @@ def get_urls(baseurl):
                 
                     for link in links:
                         href = link['href']
-                        pagelinks.append('https://connect.oeglobal.org'+href)
+                        page_links.append('https://connect.oeglobal.org'+href)
                         
                        
-    return pagelinks
+    return page_links

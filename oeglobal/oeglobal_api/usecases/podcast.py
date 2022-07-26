@@ -15,7 +15,7 @@ def get_podcast(url):
 
 
 
-    postcontainer = soup.find('div', attrs={'class':'post-content entry-content'})
+    post_container = soup.find('div', attrs={'class':'post-content entry-content'})
 
     article_text = ''
     article = soup.find("div", {"class":"post-content entry-content"}).findAll('p')

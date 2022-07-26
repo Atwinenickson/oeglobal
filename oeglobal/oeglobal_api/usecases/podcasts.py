@@ -20,9 +20,9 @@ def get_podcast():
     comments = []
     description_list = []
     dates = []
-    postcontainer = soup.findAll('div', attrs={'class':'post-container'})
+    post_container = soup.findAll('div', attrs={'class':'post-container'})
 
-    for posts in postcontainer:
+    for posts in post_container:
         headings = posts.findAll('h2', attrs={'class':'post-title'})
 
 
