@@ -10,7 +10,7 @@ router.register(r'topics', TopicViewSet)
 router.register(r'topicsurl', TopicURLViewSet)
 router.register(r'podcasts', PodcastViewSet)
 router.register(r'podcasts/recent', RecentPodcastViewSet)
-router.register(r'podcast/<int:id>', SinglePodcastViewSet) 
+router.register(r'singlepodcast', SinglePodcastViewSet) 
 
 urlpatterns = [
    path('', include(router.urls)),
