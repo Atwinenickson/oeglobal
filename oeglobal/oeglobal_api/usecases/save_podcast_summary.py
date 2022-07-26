@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from podcast import get_podcast
-from podcasturls import get_podcasturl
+from podcast_urls import get_podcasturl
 import json
 import sqlite3
 from pathlib import Path

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from article import get_articles
-from posturls import get_urls
+from post_urls import get_urls
 import json
 import sqlite3
 from pathlib import Path
