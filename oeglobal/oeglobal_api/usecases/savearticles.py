@@ -28,20 +28,20 @@ class OeglobalNewsDetail:
 
     def SaveToDatabase(self,dictironaryData, dictironaryTopics, dictironaryUrls):
         randomNumber = random.randint(1,1000)
-        topicurls = dictironaryUrls['topic_urls']
-        topicurlid = dictironaryUrls['id']
+        topic_urls = dictironaryUrls['topic_urls']
+        topic_url_id = dictironaryUrls['id']
 
         topic = dictironaryTopics['topics']
-        topicid = dictironaryTopics['id']
+        topic_id = dictironaryTopics['id']
         
-        articleid = dictironaryData['id']
+        article_id = dictironaryData['id']
         title = dictironaryData['title']
         replies = dictironaryData['replies']
         views = dictironaryData['views']
         date = dictironaryData['date']
-        articleurl = dictironaryData['article_url']
+        article_url = dictironaryData['article_url']
 
-        result = self.connection.execute("select Articleurl from oeglobal_api_article where Articleurl = ?", (articleurl,))
+        result = self.connection.execute("select article_url from oeglobal_api_article where article_url = ?", (article_url,))
         result=result.fetchall()
         print('result')
         print(result)
@@ -49,7 +49,7 @@ class OeglobalNewsDetail:
         if len(result) > 0:
             print('Article exists')
         else:
-            self.connection.execute('insert into oeglobal_api_article values(?,?,?,?,?,?,?)',[None, articleid, title, articleurl, replies, views, date])
+            self.connection.execute('insert into oeglobal_api_article values(?,?,?,?,?,?,?)',[None, article_id, title, article_url, replies, views, date])
             self.connection.commit()
 
         for data in topic:
@@ -58,16 +58,16 @@ class OeglobalNewsDetail:
             if len(result1) > 0 :
                 print('Topic Exists')
             else:
-                self.connection.execute('insert into oeglobal_api_topic values(?,?,?,?)',[None, topicid , data, articleid])
+                self.connection.execute('insert into oeglobal_api_topic values(?,?,?,?)',[None, topic_id , data, article_id])
                 self.connection.commit()
         
-        for topicurl in topicurls:
-            result2 = self.connection.execute('select topicurl from oeglobal_api_topicurl where TopicUrl = ?', [topicurl])
+        for topic_url in topic_urls:
+            result2 = self.connection.execute('select topic_url from oeglobal_api_topicurl where topic_url = ?', [topic_url])
             result2=result2.fetchall()
             if len(result2) > 0 :
                 print('Topic URL exists')
             else:
-                self.connection.execute('insert into oeglobal_api_topicurl values(?,?,?,?)',[None, topicurlid , topicurl, topicid])
+                self.connection.execute('insert into oeglobal_api_topicurl values(?,?,?,?)',[None, topic_url_id , topic_url, topic_id])
                 self.connection.commit()
 
 

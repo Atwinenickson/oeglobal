@@ -23,32 +23,32 @@ class OeglobalPodcast:
         
 
     def SaveToDatabase(self,dictironaryPodcast, dictironaryPodcasturl):
-        for recentpodcast in dictironaryPodcasturl:
-            recentpodcasttitle = recentpodcast['title']
-            recentpodcasturl = recentpodcast['recent_podcast_url']
-            recentdate = recentpodcast['date']
-            result = self.connection.execute("select Title from oeglobal_api_recentpodcast where Title = ?", (recentpodcasttitle,))
+        for recent_podcast in dictironaryPodcasturl:
+            recent_podcast_title = recent_podcast['title']
+            recent_podcast_url = recent_podcast['recent_podcast_url']
+            recent_date = recent_podcast['date']
+            result = self.connection.execute("select Title from oeglobal_api_recentpodcast where title = ?", (recent_podcast_title,))
             result=result.fetchall()
             if len(result) > 0:
                 print('Recent Podcast exists')
             else:
-                self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?)',[None , recentpodcasttitle, recentpodcasturl, recentdate])
+                self.connection.execute('insert into oeglobal_api_recentpodcast values(?,?,?,?)',[None , recent_podcast_title, recent_podcast_url, recent_date])
             
             self.connection.commit()
 
         for podcast in dictironaryPodcast:
             title = podcast['title']
-            podcasturl = podcast['podcast_url']
+            podcast_url = podcast['podcast_url']
             comments = podcast['comments']
             description = podcast['description']
             date = podcast['date']
 
-            result1 = self.connection.execute("select podcasturl from oeglobal_api_podcast where Podcasturl = ?", (podcasturl,))
+            result1 = self.connection.execute("select podcast_url from oeglobal_api_podcast where podcast_url = ?", (podcast_url,))
             result1=result1.fetchall()
             if len(result1) > 0:
                 print('Podcast exists')
             else:
-                self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?)',[None, title, podcasturl, comments, description, date])
+                self.connection.execute('insert into oeglobal_api_podcast values(?,?,?,?,?,?)',[None, title, podcast_url, comments, description, date])
             self.connection.commit()
 
 

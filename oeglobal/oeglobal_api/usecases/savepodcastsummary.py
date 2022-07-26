@@ -25,13 +25,13 @@ class OeglobalPodcastDetail:
         
 
     def SaveToDatabase(self,dictironaryData):
-        podcastid = dictironaryData['id']
+        podcast_id = dictironaryData['id']
         title = dictironaryData['title']
-        audio = dictironaryData['audio_ink']
+        audio = dictironaryData['audio_link']
         description = dictironaryData['description']
         date = dictironaryData['date']
 
-        result = self.connection.execute("select AudioLink from oeglobal_api_singlepodcast where AudioLink = ?", (audio,))
+        result = self.connection.execute("select audio_link from oeglobal_api_singlepodcast where audio_link = ?", (audio,))
         result=result.fetchall()
         print('result')
         print(result)
@@ -39,7 +39,7 @@ class OeglobalPodcastDetail:
         if len(result) > 0:
             print('Podcast exists')
         else:
-            self.connection.execute('insert into oeglobal_api_singlepodcast values(?,?,?,?,?,?)',[None, podcastid, title, audio, description, date])
+            self.connection.execute('insert into oeglobal_api_singlepodcast values(?,?,?,?,?,?)',[None, podcast_id, title, audio, description, date])
             self.connection.commit()
 
 

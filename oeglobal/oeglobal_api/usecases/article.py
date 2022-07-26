@@ -65,8 +65,8 @@ def get_articles(articleurl):
     }
 
     topiclinks =  {
-        "TopicUrls":anchor_links,
-        "ID":topic_url_id
+        "topic_urls":anchor_links,
+        "id":topic_url_id
     }
     # print('...............article............')
     # print(topiclinks)
