@@ -25,11 +25,11 @@ class OeglobalPodcastDetail:
         
 
     def SaveToDatabase(self,dictironaryData):
-        podcastid = dictironaryData['ID']
-        title = dictironaryData['Title']
-        audio = dictironaryData['AudioLink']
-        description = dictironaryData['Description']
-        date = dictironaryData['Date']
+        podcastid = dictironaryData['id']
+        title = dictironaryData['title']
+        audio = dictironaryData['audio_ink']
+        description = dictironaryData['description']
+        date = dictironaryData['date']
 
         result = self.connection.execute("select AudioLink from oeglobal_api_singlepodcast where AudioLink = ?", (audio,))
         result=result.fetchall()

@@ -28,18 +28,18 @@ class OeglobalNewsDetail:
 
     def SaveToDatabase(self,dictironaryData, dictironaryTopics, dictironaryUrls):
         randomNumber = random.randint(1,1000)
-        topicurls = dictironaryUrls['TopicUrls']
-        topicurlid = dictironaryUrls['ID']
+        topicurls = dictironaryUrls['topic_urls']
+        topicurlid = dictironaryUrls['id']
 
-        topic = dictironaryTopics['Topics']
-        topicid = dictironaryTopics['ID']
+        topic = dictironaryTopics['topics']
+        topicid = dictironaryTopics['id']
         
-        articleid = dictironaryData['ID']
-        title = dictironaryData['Title']
-        replies = dictironaryData['Replies']
-        views = dictironaryData['Views']
-        date = dictironaryData['Date']
-        articleurl = dictironaryData['ArticleUrl']
+        articleid = dictironaryData['id']
+        title = dictironaryData['title']
+        replies = dictironaryData['replies']
+        views = dictironaryData['views']
+        date = dictironaryData['date']
+        articleurl = dictironaryData['article_url']
 
         result = self.connection.execute("select Articleurl from oeglobal_api_article where Articleurl = ?", (articleurl,))
         result=result.fetchall()

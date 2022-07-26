@@ -12,11 +12,11 @@ def get_articles(articleurl):
     soup = BeautifulSoup(page.text, 'html.parser')    
 
     topics = []
-    anchorlinks = []
+    anchor_links = []
     posts = []
     views = []
     for tr in soup.find_all('span',attrs={'class':'link-top-line'}):
-        anchorlinks.append(tr.findAll('a')[0]['href'])
+        anchor_links.append(tr.findAll('a')[0]['href'])
         anchors = tr.findAll('a')
         for anchor in anchors:
             topics.append(anchor.text)
@@ -49,24 +49,24 @@ def get_articles(articleurl):
 
     new_description = re.sub('\s{2,}', ' ', description)
     uuidOne = str(uuid.uuid4())
-    articleid = 'article-' + uuidOne
-    topicid = 'topic-' + uuidOne
-    topicurlid = 'topicurl-' + uuidOne
+    article_id = 'article-' + uuidOne
+    topic_id = 'topic-' + uuidOne
+    topic_url_id = 'topic_url-' + uuidOne
     article = {
-        'ID':articleid,
-        'Title':new_description, 
-    'ArticleUrl': url,
-            'Replies':replies, 
-            'Views':views, 
-            'Date':date_posted}
+        'id':article_id,
+        'title':new_description, 
+    'article_url': url,
+            'replies':replies, 
+            'views':views, 
+            'date':date_posted}
     topic =  {
-        "Topics":topics,
-        "ID":topicid
+        "topics":topics,
+        "id":topic_id
     }
 
     topiclinks =  {
-        "TopicUrls":anchorlinks,
-        "ID":topicurlid
+        "TopicUrls":anchor_links,
+        "ID":topic_url_id
     }
     # print('...............article............')
     # print(topiclinks)

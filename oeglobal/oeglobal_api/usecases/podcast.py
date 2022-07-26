@@ -6,16 +6,12 @@ import uuid
 
 
 def get_podcast(url):
-    # get url
-    # get page text
     page = requests.get(url)
-    # parse with BFS
     soup = BeautifulSoup(page.text, 'html.parser') 
 
-    # print(soup.prettify())
 
     uuidOne = str(uuid.uuid4())
-    podcastid = 'pocast-' + uuidOne
+    podcast_id = 'pocast-' + uuidOne
 
 
 
@@ -26,13 +22,9 @@ def get_podcast(url):
     for element in article:
         article_text += '\n' + ''.join(element.findAll(text = True))
 
-    # print(article_text)
-
     productDivs = soup.findAll('p', attrs={'class' : 'powerpress_links powerpress_links_mp3'})
-    # print(productDivs)
     for div in productDivs:
-        # print (div.find('a')['href'])
-        articleaudio = div.find('a')['href']
+        article_audio = div.find('a')['href']
 
     
     heading = soup.find('h1', attrs={'class' : 'post-title'}).text
@@ -40,11 +32,11 @@ def get_podcast(url):
 
     article_text = article_text.replace('\r', '').replace('\n', '')
     podcast = {
-            'ID':podcastid,
-            'Title': heading,
-            'Date': date,
-            'AudioLink':articleaudio,
-            'Description':article_text,
+            'id':podcast_id,
+            'title': heading,
+            'date': date,
+            'audio_link':article_audio,
+            'description':article_text,
             }
 
     print(podcast)
