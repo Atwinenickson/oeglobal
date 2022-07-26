@@ -5,31 +5,31 @@ from oeglobal_api.models import Article, Topic, TopicURL, Podcast, RecentPodcast
 class ArticleSerializer(serializers.ModelSerializer):
    class Meta:
        model = Article
-       fields = ('ArticleID', 'Title', 'Articleurl', 'Replies', 'Views', 'Date')
+       fields = ('article_id', 'title', 'article_url', 'replies', 'views', 'date')
        
 
 
 class TopicSerializer(serializers.ModelSerializer):
    class Meta:
        model = Topic
-       fields = ('TopicID', 'Topic', 'ArticleID')
+       fields = ('topic_id', 'topic', 'article_id')
 
 class TopicURLSerializer(serializers.ModelSerializer):
    class Meta:
        model = TopicURL
-       fields = ('TopicUrlID', 'TopicUrl', 'TopicID')
+       fields = ('topic_url_id', 'topic_url', 'topic_id')
 
 class PodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = Podcast
-       fields = ('Title', 'Podcasturl', 'Comments', 'Description', 'Date')
+       fields = ('title', 'podcast_url', 'comments', 'description', 'date')
 
 class RecentPodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = RecentPodcast
-       fields = ('Title', 'RecentPodcasturl', 'Date')
+       fields = ('title', 'recent_podcast_url', 'date')
 
 class SinglePodcastSerializer(serializers.ModelSerializer):
    class Meta:
        model = SinglePodcast
-       fields = ('SinglePodcastID','Title',  'Audiolink', 'Description', 'Date')
+       fields = ('single_podcast_id','title',  'audio_link', 'description', 'date')

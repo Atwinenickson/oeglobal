@@ -9,8 +9,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
    queryset = Article.objects.all()
    serializer_class = ArticleSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields = ['ArticleID', 'Title', 'Articleurl', 'Replies', 'Views', 'Date']
-   search_fields = ['ArticleID', 'Title', 'Articleurl', 'Replies', 'Views', 'Date']
+   filterset_fields = ['article_id', 'title', 'article_url', 'replies', 'views', 'date']
+   search_fields = ['article_id', 'title', 'article_url', 'replies', 'views', 'date']
    ordering_fields = '__all__'
 
 
@@ -18,24 +18,24 @@ class TopicViewSet(viewsets.ModelViewSet):
    queryset = Topic.objects.all()
    serializer_class = TopicSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields = ['TopicID', 'Topic', 'ArticleID']
-   search_fields = ['TopicID', 'Topic', 'ArticleID']
+   filterset_fields = ['topic_id', 'topic', 'article_id']
+   search_fields = ['topic_id', 'topic', 'article_id']
    ordering_fields = '__all__'
 
 class TopicURLViewSet(viewsets.ModelViewSet):
    queryset = TopicURL.objects.all()
    serializer_class = TopicURLSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields = ['TopicUrlID', 'TopicUrl', 'TopicID']
-   search_fields = ['TopicUrlID', 'TopicUrl', 'TopicID']
+   filterset_fields = ['topic_url_id', 'topic_url', 'topic_id']
+   search_fields = ['topic_url_id', 'topic_url', 'topic_id']
    ordering_fields = '__all__'
 
 class PodcastViewSet(viewsets.ModelViewSet):
    queryset = Podcast.objects.all()
    serializer_class = PodcastSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields = ['Title', 'Podcasturl', 'Comments', 'Description', 'Date']
-   search_fields = ['Title', 'Podcasturl', 'Comments', 'Description', 'Date']
+   filterset_fields = ['title', 'podcast_url', 'comments', 'description', 'date']
+   search_fields = ['title', 'podcast_url', 'comments', 'description', 'date']
    ordering_fields = '__all__'
 
 
@@ -43,8 +43,8 @@ class RecentPodcastViewSet(viewsets.ModelViewSet):
    queryset = RecentPodcast.objects.all()
    serializer_class = RecentPodcastSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields =  ['Title', 'RecentPodcasturl', 'Date']
-   search_fields = ['Title', 'RecentPodcasturl', 'Date']
+   filterset_fields =  ['title', 'recentpodcast_url', 'date']
+   search_fields = ['title', 'recentpodcast_url', 'date']
    ordering_fields = '__all__'
 
 
@@ -52,6 +52,6 @@ class SinglePodcastViewSet(viewsets.ModelViewSet):
    queryset = SinglePodcast.objects.all()
    serializer_class = SinglePodcastSerializer
    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields =  ['SinglePodcastID','Title',  'Audiolink', 'Description', 'Date']
-   search_fields = ['SinglePodcastID','Title',  'Audiolink', 'Description', 'Date']
+   filterset_fields =  ['single_podcast_id','title',  'audio_link', 'description', 'date']
+   search_fields = ['single_podcast_id','title',  'audio_link', 'description', 'date']
    ordering_fields = '__all__'
