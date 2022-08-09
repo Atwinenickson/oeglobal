@@ -5,102 +5,146 @@ import uuid
 
 
 uuidOne = str(uuid.uuid4())
-podcast_id = 'podcast-' + uuidOne
-recent_podcast_id = 'recentpodcast-' + uuidOne
+podcastid = "podcast-" + uuidOne
+recent_podcastid = "recentpodcast-" + uuidOne
 
-
+# get url
 url = "https://podcast.oeglobal.org/"
+# get page text
 page = requests.get(url)
-soup = BeautifulSoup(page.text, 'html.parser') 
+# parse with BFS
+soup = BeautifulSoup(page.text, "html.parser")
+
+# print(soup.prettify())
 
 
 def get_podcast():
     titles = []
-    podcast_urls = []
+    podcasturls = []
     comments = []
-    description_list = []
+    descriptionlist = []
     dates = []
-    post_container = soup.findAll('div', attrs={'class':'post-container'})
+    postcontainer = soup.findAll("div", attrs={"class": "post-container"})
 
-    for posts in post_container:
-        headings = posts.findAll('h2', attrs={'class':'post-title'})
+    # print(postcontainer)
 
+    for posts in postcontainer:
+        # print(posts)
+        headings = posts.findAll("h2", attrs={"class": "post-title"})
+
+        # print(headings)
 
         for alink in headings:
-            links = alink.findAll('a')
-          
+            links = alink.findAll("a")
+            # print(links)
 
             for anchor in links:
-                anchorlink = anchor.get('href')
-                anchor_text = anchor.text
-                podcast_urls.append(anchorlink)
-                titles.append(anchor_text)
+                anchorlink = anchor.get("href")
+                anchortext = anchor.text
+                # print(anchorlink)
+                # print(anchortext)
+                podcasturls.append(anchorlink)
+                titles.append(anchortext)
 
-        descriptions = posts.findAll('p', attrs={'class':'post-excerpt'})
-        
+        descriptions = posts.findAll("p", attrs={"class": "post-excerpt"})
 
+        # print(descriptions)
 
         for description in descriptions:
             desc = description.text
-            description_list.append(desc)
-       
-        
-        meta = posts.findAll('span', attrs={'class':'meta-text'})
+            descriptionlist.append(desc)
+            # print(desc)
+
+        meta = posts.findAll("span", attrs={"class": "meta-text"})
         datelist = meta[0]
         commentlist = meta[1]
 
         for date in datelist:
             date = date
+            # print(date)
             dates.append(date)
-        
+
         for comment in commentlist:
             comment = comment
+            # print(comment)
             comments.append(comment)
-        
+
         podcast = {
-                'id':podcast_id,
-                'title':anchor_text, 
-            'podcast_url': anchorlink,
-                    'comments':comment, 
-                    'description':desc, 
-                    'date':date}
-    podcasts = [{'title': titles, 'podcast_url': podcast_urls,'comments': comments, 'description': description_list, 'date':dates} for titles,podcast_urls, comments,description_list, dates in zip(titles,podcast_urls,comments,description_list,dates )]
+            
+            "Title": anchortext,
+            "Podcasturl": anchorlink,
+            "Comments": comment,
+            "Description": desc,
+            "Date": date,
+        }
+    podcasts = [
+        {
+            "Title": titles,
+            "Podcasturl": podcasturls,
+            "Comments": comments,
+            "Description": descriptionlist,
+            "Date": dates,
+        }
+        for titles, podcasturls, comments, descriptionlist, dates in zip(
+            titles, podcasturls, comments, descriptionlist, dates
+        )
+    ]
+    # print("Podcasts:",podcasts)
 
     return podcasts
 
 
+# get_podcast()
+
+# print('....................|||||.....................\n')
+
 
 def get_recent_podcast():
     titles = []
-    podcast_urls = []
+    podcasturls = []
     dates = []
-    
-    recentcontainers = soup.findAll('div', attrs={'class':'widget widget_garfunkel_recent_posts'})
+
+    recentcontainers = soup.findAll(
+        "div", attrs={"class": "widget widget_garfunkel_recent_posts"}
+    )
+    # print(recentcontainer)
 
     for recentcontainer in recentcontainers:
-        itemlist = recentcontainer.findAll('li')
-
+        # print(recentcontainer)
+        itemlist = recentcontainer.findAll("li")
+        # print(itemlist)
         for item in itemlist:
-            recentlink = recentcontainer.find('a')
-            recentlink = recentlink.get('href')
-
-            podcast_urls.append(recentlink)
-            recentdiv = recentcontainer.findAll('div', attrs={'class':'inner'})
+            recentlink = recentcontainer.find("a")
+            recentlink = recentlink.get("href")
+            # print(recentlink)
+            podcasturls.append(recentlink)
+            recentdiv = recentcontainer.findAll("div", attrs={"class": "inner"})
             for div in recentdiv:
-                title = div.find('p', attrs={'class':'title'})
-                date = div.find('p', attrs={'class':'meta'})
+                title = div.find("p", attrs={"class": "title"})
+                date = div.find("p", attrs={"class": "meta"})
                 title = title.text
                 titles.append(title)
                 date = date.text
                 dates.append(date)
 
-               
+                # print(title)
+                # print(date)
             recentpodcast = {
-                    'id':recent_podcast_id,
-                    'title':title, 
-                'recent_podcast_url': recentlink,
-                        'date':date}
-                
-    recentpodcasts = [{'title': titles, 'recent_podcast_url': podcast_urls, 'date':dates} for titles,podcast_urls, dates in zip(titles,podcast_urls,dates )]
+              
+                "Title": title,
+                "RecentPodcasturl": recentlink,
+                "Date": date,
+            }
+
+            # print(recentpodcast)
+            # return recentpodcast
+    recentpodcasts = [
+        {"Title": titles, "RecentPodcasturl": podcasturls, "Date": dates}
+        for titles, podcasturls, dates in zip(titles, podcasturls, dates)
+    ]
+    # print("Recent Podcasts:",recentpodcasts)
 
     return recentpodcasts
+
+
+# get_recent_podcast()

@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class OeglobalApiConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'oeglobal_api'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "oeglobal_api"
