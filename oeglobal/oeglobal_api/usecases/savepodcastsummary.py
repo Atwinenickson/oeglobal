@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from podcast import get_podcast
-from podcasturls import get_podcasturl
+from oeglobal_api.usecases.podcast import get_podcast
+from oeglobal_api.usecases.podcasturls import get_podcasturl
 import json
 import sqlite3
 from pathlib import Path
@@ -49,4 +49,4 @@ class OeglobalPodcastDetail:
             self.connection.commit()
 
 
-OeglobalPodcastDetail("https://podcast.oeglobal.org/").OeglobalData()
+# OeglobalPodcastDetail("https://podcast.oeglobal.org/").OeglobalData()
