@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from article import get_articles
+from oeglobal_api.usecases.article import get_articles
 
 
 def get_urls(baseurl):

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from article import get_articles
-from posturls import get_urls
+from oeglobal_api.usecases.article import get_articles
+from oeglobal_api.usecases.posturls import get_urls
 import json
 import sqlite3
 from pathlib import Path
@@ -15,7 +15,7 @@ class OeglobalNewsDetail:
     def __init__(self, url):
         self.url = url
         self.connection = sqlite3.connect(
-            "/home/atwine/nickson/Work/OEDELETE/oegsearch/oeglobal/db.sqlite3"
+            "/home/atwine/nickson/Work/oeglobal/oeglobal/db.sqlite3"
         )
         self.connection.row_factory = lambda cursor, row: row[0]
         self.cursor = self.connection.cursor()
@@ -107,4 +107,4 @@ class OeglobalNewsDetail:
                 self.connection.commit()
 
 
-OeglobalNewsDetail("https://connect.oeglobal.org/").OeglobalData()
+# OeglobalNewsDetail("https://connect.oeglobal.org/").OeglobalData()
